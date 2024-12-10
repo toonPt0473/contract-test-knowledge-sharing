@@ -61,7 +61,7 @@ describe("Products API test", () => {
     const expectedOrder = {
       id: 10,
       type: "pizza",
-      name: "Margharita",
+      firstName: "Margharita",
       active: true,
     };
 
@@ -84,7 +84,6 @@ describe("Products API test", () => {
     // (5) Act
     const api = new OrderClient(mockProvider.mockService.baseUrl);
     const order = await api.getOrder(10);
-
     // (6) Assert that we got the expected response
     expect(order).to.deep.equal(
       new Order(10, "Margharita", "pizza", expectedOrder)

@@ -4,6 +4,7 @@ class Order {
     this.name = name;
     this.type = type;
     this.data = data;
+    this.firstName = name;
   }
 }
 module.exports = {
