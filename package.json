@@ -1,0 +1,30 @@
+{
+  "name": "pactflow-getting-started-js",
+  "version": "0.1.1",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.18.1"
+  },
+  "scripts": {
+    "test:consumer": "mocha --exit --timeout 30000 consumer.pact.spec.js",
+    "publish": "env-cmd npx pact-broker publish ./pacts/toonpt-consumer-toonpt-provider.json --consumer-app-version 1.0.0 --branch main",
+    "can-i-deploy:consumer": "npx pact-broker can-i-deploy --pacticipant toonpt-consumer --version 1.0.0 --to-environment production --broker-base-url=https://toonpt.pactflow.io --broker-token=jVGE6U208d-up67UfRW9LQ",
+    "record-deployment:consumer": "npx pact-broker record-deployment --pacticipant toonpt-consumer --version 1.0.0 --environment production --broker-base-url=https://toonpt.pactflow.io --broker-token=jVGE6U208d-up67UfRW9LQ",
+    "test:provider": "mocha --exit --timeout 30000 provider.pact.spec.js",
+    "can-i-deploy:provider": "npx pact-broker can-i-deploy --pacticipant toonpt-provider --version 1.0.0 --to-environment production --broker-base-url=https://toonpt.pactflow.io --broker-token=jVGE6U208d-up67UfRW9LQ",
+    "record-deployment:provider": "npx pact-broker record-deployment --pacticipant toonpt-provider --version 1.0.0 --environment production --broker-base-url=https://toonpt.pactflow.io --broker-token=jVGE6U208d-up67UfRW9LQ",
+    "test:consumer:order": "mocha --exit --timeout 30000 order.pact.spec.js",
+    "publish:order": "env-cmd npx pact-broker publish ./pacts/toonpt-consumer-order-toonpt-provider.json --consumer-app-version 1.0.0 --branch main",
+    "can-i-deploy:consumer:order": "npx pact-broker can-i-deploy --pacticipant toonpt-consumer-order --version 1.0.0 --to-environment production --broker-base-url=https://toonpt.pactflow.io --broker-token=jVGE6U208d-up67UfRW9LQ",
+    "record-deployment:consumer:order": "npx pact-broker record-deployment --pacticipant toonpt-consumer-order --version 1.0.0 --environment production --broker-base-url=https://toonpt.pactflow.io --broker-token=jVGE6U208d-up67UfRW9LQ"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "^10.1.1",
+    "chai": "^4.3.6",
+    "dotenv-cli": "^7.4.4",
+    "env-cmd": "^10.1.0",
+    "mocha": "^10.0.0"
+  }
+}
